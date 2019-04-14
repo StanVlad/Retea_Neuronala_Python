@@ -17,9 +17,9 @@ def normalize_data(train_samples, test_samples):
     return scaled_train_samples, scaled_test_samples
 
 #declararea modelului de retea neuronala
-mlp_classifier_model = MLPClassifier(hidden_layer_sizes = num_neurons_per_layer, activation='relu', solver='sgd', alpha=reg_coef, batch_size=b_size,
-learning_rate='invscaling', learning_rate_init=lr_initial, power_t=lr_coef, max_iter=num_max_epoci, shuffle=True, random_state=None, tol=tol_coef,
-momentum=0.9, early_stopping=False, validation_fraction=0.1, n_iter_no_change=num_epoci_fara_schimbare)
+mlp_classifier_model = MLPClassifier(hidden_layer_sizes = (600,), activation='relu', solver='adam', alpha=0.0001, batch_size=5000,
+learning_rate='constant', learning_rate_init=0.001, power_t=0.5, max_iter=150, shuffle=True, random_state=None, tol=0.0001,
+momentum=0.9, early_stopping=False, validation_fraction=0.1, n_iter_no_change=10)
 
 scaled_train_data, scaled_test_data = normalize_data(train_samples, test_samples)#normalizarea datelor de antrenare si de test
 
